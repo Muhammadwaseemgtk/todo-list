@@ -6,7 +6,7 @@ const TodoList = () => {
   const [headingInput, setHeadingInput] = useState("");
 
   const addHeadingHandler = () => {
-    if (headingInput.trim !== "") {
+    if (headingInput.trim() !== "") {
       setTodos([...todos, { heading: headingInput, lists: [] }]);
       setHeadingInput("");
     }
@@ -32,11 +32,14 @@ const TodoList = () => {
         </div>
       </div>
       <div className="todo_main">
-        {todos.map((todo, index) => {
+        {todos.map((todo, index) => (
           <div key={index} className="todo-card">
-            {todo.heading}
-          </div>;
-        })}
+            <div className="heading_todo">
+              <h3>{todo.heading}</h3>
+              <button className="delete-button">Delete</button>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );
